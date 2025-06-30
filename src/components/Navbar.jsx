@@ -17,12 +17,19 @@ export const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10); // sửa từ screenY => scrollY
+      setIsScrolled(window.scrollY > 10);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Lọc item khi cuộn xuống: chỉ hiển thị 3 mục cuối
+  const filteredNavItems = isScrolled
+    ? navItems.filter((item) =>
+        ["skills", "projects", "contact"].includes(item.to)
+      )
+    : navItems;
 
   return (
     <nav
@@ -32,9 +39,7 @@ export const Navbar = () => {
       )}>
       <div className="container flex items-center justify-between">
         <a
-          href="hero"
-          smooth={true}
-          duration={500}
+          href="https://nhp299.github.io/NhpPortfolio/"
           className="text-xl font-bold text-primary flex items-center cursor-pointer">
           <span className="relative z-10">
             <span className="text-glow text-foreground"> Nhp </span> Portfolio
@@ -45,11 +50,12 @@ export const Navbar = () => {
         <div className="hidden md:flex space-x-8">
           {navItems.map((item, key) => (
             <ScrollLink
+              key={key}
               to={item.to}
               smooth="easeInOutCubic"
               duration={100}
               offset={-60}
-              className="cursor-pointer text-foreground/80 hover:text-primary transition-colors duration-300">
+              className="text-foreground/80 hover:text-primary transition-colors duration-300">
               {item.name}
             </ScrollLink>
           ))}
@@ -66,20 +72,27 @@ export const Navbar = () => {
         {/* mobile nav menu */}
         <div
           className={cn(
-            "fixed inset-0 bg-background/95 backdrop-blur-md z-40 flex flex-col items-center justify-center",
+            "fixed inset-0 bg-background/95 backdrop-blur-md z-40 flex items-center justify-center",
             "transition-all duration-300 md:hidden",
             isMenuOpen
               ? "opacity-100 pointer-events-auto"
               : "opacity-0 pointer-events-none"
           )}>
-          <div className="flex flex-col space-y-8 text-xl">
-            {navItems.map((item, key) => (
+          <div
+            className={cn(
+              isScrolled
+                ? "flex flex-row space-x-8 overflow-x-auto max-w-full px-4 whitespace-nowrap"
+                : "flex flex-col space-y-8",
+              "text-xl"
+            )}>
+            {filteredNavItems.map((item, key) => (
               <ScrollLink
+                key={key}
                 to={item.to}
                 smooth="easeInOutCubic"
                 duration={200}
                 offset={-60}
-                className="cursor-pointer text-foreground/80 hover:text-primary transition-colors duration-300">
+                className="text-foreground/80 hover:text-primary transition-colors duration-300">
                 {item.name}
               </ScrollLink>
             ))}

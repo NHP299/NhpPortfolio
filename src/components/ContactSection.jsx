@@ -59,72 +59,83 @@ export const ContactSection = () => {
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          <div className="space-y-8">
-            <h3 className="text-3xl font-semibold mb-6 ml-14">
-              {" "}
-              Contact Information
-            </h3>
+          <div className="space-y-12">
+            {/* Title */}
+            <h3 className="text-3xl font-semibold text-primary">Contact Information</h3>
 
-            <div className="space-y-6 justify-center ">
-              <div className="flex items-start space-x-3">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <Mail className="h-6 w-6 text-primary" />{" "}
+            {/* Contact List */}
+            <div className="space-y-6">
+              {/* Email */}
+              <div className="flex items-center gap-6">
+                <div className="p-3 rounded-full bg-primary/10 flex items-center justify-center">
+                  <Mail className="h-6 w-6 text-primary" />
                 </div>
-                <div>
-                  <h4 className="font-medium in"> Email</h4>
+                <div className="flex items-center gap-2 flex-wrap">
+                  <h4 className="font-medium min-w-[80px]">Email:</h4>
                   <a
-                    href="mailto:nhp29904@gmail.com"
-                    className="text-muted-foreground hover:text-primary transition-colors">
+                    href="mailto:Nhp29904@gmail.com"
+                    className="text-muted-foreground hover:text-primary transition-colors break-all">
                     Nhp29904@gmail.com
                   </a>
                 </div>
               </div>
-              <div className="flex items-start space-x-3">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <Phone className="h-6 w-6 text-primary" />{" "}
+
+              {/* Phone */}
+              <div className="flex items-center gap-6">
+                <div className="p-3 rounded-full bg-primary/10 flex items-center justify-center">
+                  <Phone className="h-6 w-6 text-primary" />
                 </div>
-                <div>
-                  <h4 className="font-medium"> Phone</h4>
+                <div className="flex items-center gap-2 flex-wrap">
+                  <h4 className="font-medium min-w-[80px]">Phone:</h4>
                   <a
                     href="tel:+84766707431"
                     className="text-muted-foreground hover:text-primary transition-colors">
-                    +84766 707 431
+                    +84 766 707 431
                   </a>
                 </div>
               </div>
-              <div className="flex items-start space-x-3">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <MapPin className="h-6 w-6 text-primary" />{" "}
+
+              {/* Location */}
+              <div className="flex items-center gap-6">
+                <div className="p-3 rounded-full bg-primary/10 flex items-center justify-center">
+                  <MapPin className="h-6 w-6 text-primary" />
                 </div>
-                <div>
-                  <h4 className="font-medium"> Location</h4>
-                  <a className="text-muted-foreground hover:text-primary transition-colors">
-                    16 Hoa My 9, Lien Chieu, Da Nang, Vietnam
-                  </a>
+                <div className="flex items-center gap-2 flex-wrap">
+                  <h4 className="font-medium min-w-[80px]">Location:</h4>
+                  <span className="text-muted-foreground hover:text-primary transition-colors">
+                    Hoa Minh, Da Nang, Vietnam
+                  </span>
                 </div>
               </div>
             </div>
 
-            <div className="pt-8 ml-12">
-              <h4 className="font-medium mb-4"> Connect With Me</h4>
-              <div className="flex space-x-4 justify-center">
+            {/* Social Links */}
+            <div className="pt-8">
+              <h4 className="font-medium mb-4 text-center">Connect With Me</h4>
+              <div className="flex justify-center gap-6">
                 <a
                   href="https://www.linkedin.com/in/ph%C3%BAc-nguy%E1%BB%85n-219a20366/"
-                  target="_blank">
-                  <Linkedin />
+                  target="_blank"             
+                  className="hover:text-primary transition-colors">
+                  <Linkedin className="h-6 w-6" />
                 </a>
-                <a href="https://github.com/NHP299" target="_blank">
-                  <Github />
+                <a
+                  href="https://github.com/NHP299"
+                  target="_blank"                
+                  className="hover:text-primary transition-colors">
+                  <Github className="h-6 w-6" />
                 </a>
                 <a
                   href="https://www.facebook.com/huu.phuc.500369"
-                  target="_blank">
-                  <Facebook />
+                  target="_blank"                  
+                  className="hover:text-primary transition-colors">
+                  <Facebook className="h-6 w-6" />
                 </a>
                 <a
                   href="https://www.youtube.com/@phucnguyen5243"
-                  target="_blank">
-                  <Youtube />
+                  target="_blank"               
+                  className="hover:text-primary transition-colors">
+                  <Youtube className="h-6 w-6" />
                 </a>
               </div>
             </div>
