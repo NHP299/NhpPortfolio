@@ -1,5 +1,5 @@
 import { Briefcase, Code, User } from "lucide-react";
-
+import { Link as ScrollLink } from "react-scroll";
 export const AboutSection = () => {
   return (
     <section id="about" className="py-24 px-4 relative">
@@ -30,13 +30,17 @@ export const AboutSection = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
-              <a href="#contact" className="cosmic-button">
-                {" "}
+              <ScrollLink
+                to="contact"
+                smooth="easeInOutCubic"
+                duration={200}
+                offset={-60}
+                className="cosmic-button cursor-pointer">
                 Get In Touch
-              </a>
+              </ScrollLink>
 
               <a
-                href=""
+                href="https://drive.google.com/file/d/1VA_Yihl4QNT_DNnkL6pwUCgfxTABunfQ/view?usp=drive_link"
                 className="px-6 py-2 rounded-full border border-primary text-primary hover:bg-primary/10 transition-colors duration-300">
                 Download CV
               </a>

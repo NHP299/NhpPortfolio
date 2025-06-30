@@ -6,7 +6,7 @@ const projects = [
     title: "Hotel Booking Website",
     description:
       "A responsive hotel booking platform with room search, booking, and reservation management. Built using ReactJS, Tailwind CSS, and integrated Spring Boot APIs.",
-    image: "/projects/project1.png",
+    image: "projects/project1.png",
     tags: ["React", "TailwindCSS", "Spring Boot"],
     demoUrl: "#",
     githubUrl: "#",
@@ -16,7 +16,7 @@ const projects = [
     title: "Product Management System",
     description:
       "An individual web system for managing products and categories with SQL Server. Developed using Thymeleaf, Bootstrap 5.",
-    image: "/projects/project2.png",
+    image: "projects/project2.png",
     tags: ["Thymeleaf", "Bootstrap 5", "SQL Server"],
     demoUrl: "#",
     githubUrl: "#",
@@ -26,7 +26,7 @@ const projects = [
     title: "SbayBus Ticket Sales Website",
     description:
       "Developed during internship using PHP and MySQL. Implemented booking features and designed responsive user interface with Bootstrap 5.",
-    image: "/projects/project3.png",
+    image: "projects/project3.png",
     tags: ["PHP", "MySQL", "Bootstrap 5"],
     demoUrl: "#",
     githubUrl: "#",

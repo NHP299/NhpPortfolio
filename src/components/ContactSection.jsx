@@ -1,37 +1,50 @@
 import {
   Facebook,
   Github,
-  Instagram,
   Linkedin,
   Mail,
   MapPin,
   Phone,
   Send,
-  Twitch,
-  Twitter,
   Youtube,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
-import { useState } from "react";
-
+import { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 export const ContactSection = () => {
+  const formRef = useRef(null);
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     setIsSubmitting(true);
 
-    setTimeout(() => {
-      toast({
-        title: "Message sent!",
-        description: "Thank you for your message. I'll get back to you soon.",
+    emailjs
+      .sendForm(
+        "service_95n9ju9",
+        "template_nyj2ged",
+        formRef.current,
+        "qz0klx3CsCQ1_Mvac"
+      )
+      .then(() => {
+        toast({
+          title: "Message sent!",
+          description: "Thanks for your message. I’ll reply soon.",
+        });
+        setIsSubmitting(false);
+        formRef.current?.reset();
+      })
+      .catch(() => {
+        toast({
+          title: "Error!",
+          description: "Something went wrong. Try again later.",
+        });
+        setIsSubmitting(false);
       });
-      setIsSubmitting(false);
-    }, 1500);
   };
+  
   return (
     <section id="contact" className="py-24 px-4 relative bg-secondary/30">
       <div className="container mx-auto max-w-5xl">
@@ -53,7 +66,7 @@ export const ContactSection = () => {
             </h3>
 
             <div className="space-y-6 justify-center ">
-              <div className="flex items-center space-x-32">
+              <div className="flex items-start space-x-3">
                 <div className="p-3 rounded-full bg-primary/10">
                   <Mail className="h-6 w-6 text-primary" />{" "}
                 </div>
@@ -66,7 +79,7 @@ export const ContactSection = () => {
                   </a>
                 </div>
               </div>
-              <div className="flex items-center space-x-38">
+              <div className="flex items-start space-x-3">
                 <div className="p-3 rounded-full bg-primary/10">
                   <Phone className="h-6 w-6 text-primary" />{" "}
                 </div>
@@ -79,14 +92,14 @@ export const ContactSection = () => {
                   </a>
                 </div>
               </div>
-              <div className="flex items-start space-x-4">
+              <div className="flex items-start space-x-3">
                 <div className="p-3 rounded-full bg-primary/10">
                   <MapPin className="h-6 w-6 text-primary" />{" "}
                 </div>
                 <div>
                   <h4 className="font-medium"> Location</h4>
                   <a className="text-muted-foreground hover:text-primary transition-colors">
-                    16 Hoa My 9, Hoa Minh, Lien Chieu, Da Nang, Vietnam
+                    16 Hoa My 9, Lien Chieu, Da Nang, Vietnam
                   </a>
                 </div>
               </div>
@@ -117,17 +130,14 @@ export const ContactSection = () => {
             </div>
           </div>
 
-          <div
-            className="bg-card p-8 rounded-lg shadow-xs"
-            onSubmit={handleSubmit}>
+          <div className="bg-card p-8 rounded-lg shadow-xs">
             <h3 className="text-2xl font-semibold mb-6"> Send a Message</h3>
 
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={handleSubmit} ref={formRef}>
               <div>
                 <label
                   htmlFor="name"
                   className="block text-sm font-medium mb-2">
-                  {" "}
                   Your Name
                 </label>
                 <input
@@ -135,7 +145,7 @@ export const ContactSection = () => {
                   id="name"
                   name="name"
                   required
-                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden foucs:ring-2 focus:ring-primary"
+                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary"
                   placeholder="Huu Phuc Ng..."
                 />
               </div>
@@ -144,7 +154,6 @@ export const ContactSection = () => {
                 <label
                   htmlFor="email"
                   className="block text-sm font-medium mb-2">
-                  {" "}
                   Your Email
                 </label>
                 <input
@@ -152,7 +161,7 @@ export const ContactSection = () => {
                   id="email"
                   name="email"
                   required
-                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden foucs:ring-2 focus:ring-primary"
+                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary"
                   placeholder="nhp29904@gmail.com"
                 />
               </div>
@@ -161,14 +170,13 @@ export const ContactSection = () => {
                 <label
                   htmlFor="message"
                   className="block text-sm font-medium mb-2">
-                  {" "}
                   Your Message
                 </label>
                 <textarea
                   id="message"
                   name="message"
                   required
-                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden foucs:ring-2 focus:ring-primary resize-none"
+                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary resize-none"
                   placeholder="Hello, I'd like to talk about..."
                 />
               </div>
